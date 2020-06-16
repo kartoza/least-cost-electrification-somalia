@@ -1,2 +1,2 @@
-# gep-benin
-Global Electrification Platform for Benin
+# Benin Electrification Platform
+Electrification Platform for Benin
