@@ -1,0 +1,30 @@
+version: '2.1'
+
+services:
+  db:
+    image: kartoza/postgis:11.0-2.5
+    environment:
+      - ALLOW_IP_RANGE=0.0.0.0/0
+      - USERNAME=docker
+      - PASS=docker
+    restart: on-failure:5
+    ports:
+      - "3005:5432"
+
+  backend:
+    build: backend
+    entrypoint: setup.sh
+    volumes:
+      - ./backend/data-service:/home/data-service
+    links:
+      - db:db
+    ports:
+      - "3000:3000"
+
+  frontend:
+    build: frontend
+    entrypoint: setup.sh
+    volumes:
+      - ./frontend/explorer:/home/explorer
+    ports:
+      - "3001:9000"
