@@ -27,4 +27,4 @@ services:
     volumes:
       - ./frontend/explorer:/home/explorer
     ports:
-      - "3001:9000"
+      - "9000:9000"
