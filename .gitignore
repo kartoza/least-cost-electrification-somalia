@@ -1,2 +1,6 @@
 .idea
 backups
+docker-osm-settings/*lock
+docker-osm-settings/country.pbf
+docker-osm-settings/last.state.txt
+docker-osm-settings/timestamp.txt
