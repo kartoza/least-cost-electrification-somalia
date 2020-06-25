@@ -3,12 +3,37 @@ PROJECT_ID := gep-benin
 SHELL := /bin/bash
 COMPOSE := -f docker-osm-compose.yml -f docker-compose.yml
 
+build-up:
+	@echo
+	@echo "------------------------------------------------------------------"
+	@echo "Building in production mode"
+	@echo "------------------------------------------------------------------"
+	@docker-compose $(COMPOSE) -p $(PROJECT_ID) up -d db
+	@docker-compose $(COMPOSE) -p $(PROJECT_ID) up -d frontend
+	@docker-compose $(COMPOSE) -p $(PROJECT_ID) up -d backend
+	@make prepare-dev-db
+	@make up
+
 up:
 	@echo
 	@echo "------------------------------------------------------------------"
 	@echo "Building in production mode"
 	@echo "------------------------------------------------------------------"
 	@docker-compose $(COMPOSE) -p $(PROJECT_ID) up -d
+
+frontend-up:
+	@echo
+	@echo "------------------------------------------------------------------"
+	@echo "up frontend"
+	@echo "------------------------------------------------------------------"
+	@docker-compose $(COMPOSE) -p $(PROJECT_ID) up -d frontend
+
+frontend-build:
+	@echo
+	@echo "------------------------------------------------------------------"
+	@echo "prepare database"
+	@echo "------------------------------------------------------------------"
+	@docker exec -it $(PROJECT_ID)_frontend_1 yarn build
 
 geonode-up:
 	@echo
