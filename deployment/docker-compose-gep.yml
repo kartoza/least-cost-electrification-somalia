@@ -1,7 +1,6 @@
-version: '2.1'
-
+version: '3.4'
 volumes:
-  osm-postgis-data:
+  bep-database:
   import_done:
   import_queue:
   cache:
@@ -18,17 +17,33 @@ services:
       # Uncomment to expose the postgis database on the network
       # - ALLOW_IP_RANGE= 0.0.0.0/0
     volumes:
-      - osm-postgis-data:/var/lib/postgresql
-    ports:
-      - "3005:5432"
+      - bep-database:/var/lib/postgresql/data/
     healthcheck:
       test: "exit 0"
+
+  backend:
+    build: ../backend
+    entrypoint: setup.sh
+    volumes:
+      - ../backend/data-service:/home/data-service
+    links:
+      - db:db
+    ports:
+      - "3000:3000"
+
+  frontend:
+    build: ../frontend
+    entrypoint: setup.sh
+    volumes:
+      - ../frontend/explorer:/home/explorer
+    ports:
+      - "9000:9000"
 
   downloader:
     image: kartoza/docker-osm:pbf-downloader
     volumes:
       # These are sharable to other containers
-      - ./docker-osm-settings:/home/settings
+      - ../docker-osm-settings:/home/settings
     environment:
       # Read the README in docker-osm-pbf
       - CONTINENT=africa
@@ -41,13 +56,12 @@ services:
     image: kartoza/docker-osm:imposm-latest
     volumes:
       # These are sharable to other containers
-      - ./docker-osm-settings:/home/settings
+      - ../docker-osm-settings:/home/settings
       - import_done:/home/import_done
       - import_queue:/home/import_queue
       - cache:/home/cache
     depends_on:
-      db:
-        condition: service_healthy
+      - db
     environment:
       - POSTGRES_USER=docker
       - POSTGRES_PASS=docker
@@ -85,13 +99,12 @@ services:
     image: kartoza/docker-osm:osmupdate-latest
     volumes:
       # These are sharable to other containers
-      - ./docker-osm-settings:/home/settings
+      - ../docker-osm-settings:/home/settings
       - import_done:/home/import_done
       - import_queue:/home/import_queue
       - cache:/home/cache
     depends_on:
-      db:
-        condition: service_healthy
+      - db
     environment:
       # These are all currently the defaults but listed here for your
       # convenience if you want to change them
@@ -113,25 +126,3 @@ services:
       # if 0, then no update will be done, only the first initial import from the PBF
       - TIME=120
     command: bash -c "while [ ! -f /home/settings/country.pbf ] ; do sleep 1; done && python3 -u /home/download.py"
-
-  osmenrich:
-    image: kartoza/docker-osm:osmenrich-latest
-    volumes:
-      # These are sharable to other containers
-      - ./docker-osm-settings:/home/settings
-      - import_done:/home/import_done
-      - import_queue:/home/import_queue
-      - cache:/home/cache
-    depends_on:
-      db:
-        condition: service_healthy
-    environment:
-      # These are all currently the defaults but listed here for your
-      # convenience if you want to change them
-      # folder for diff which hasn't been imported yet
-      - IMPORT_QUEUE=import_queue
-      # folder for diff which has been imported
-      - IMPORT_DONE=import_done
-      # seconds between 2 executions of the script
-      # if 0, then no update will be done, only the first initial import from the PBF
-      - TIME=120

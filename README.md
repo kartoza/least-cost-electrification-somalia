@@ -7,7 +7,7 @@ Electrification Platform for Benin
 
 ## Development
 To deploy the GEP stuff:
-1. Go back to root folder, and do `make up`
+1. Go back to deployment folder, and do `make up`
 2. Go to backend/data-service/fixtures and put the the scenario in there. 
 3. After everything done, do `make prepare-dev-db`
 4. The server will be ready in http://localhost:9000/

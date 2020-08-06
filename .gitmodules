@@ -4,6 +4,3 @@
 [submodule "backend/data-service"]
 	path = backend/data-service
 	url = https://github.com/kartoza/global-electrification-platform-data-service.git
-[submodule "geonode"]
-	path = geonode
-	url = https://github.com/kartoza/geonode.git
