@@ -20,7 +20,7 @@ djangorestframework-gis==0.13
 service_identity
 
 # igrac
-wagtail==2.9
+wagtail>=2.9.3
 wagtailmenus
 pyexcel-xls
 pyexcel-xlsx
