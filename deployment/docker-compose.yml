@@ -48,7 +48,7 @@ x-common-django:
     # for gep configuration
     - GEP_TITLE=Somalia Electrification Programme
     - GEP_SHORT_TITLE=SEP
-    - SDI_TITLE=Somalia Electrification Platform DI
+    - SDI_TITLE=Somalia Electrification Platform SDI
   volumes:
     - ../django_project:/home/web/django_project
     - ./volumes/static:/home/web/static:rw
