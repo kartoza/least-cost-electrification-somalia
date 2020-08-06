@@ -16,7 +16,6 @@ To deploy geonode:
 1. `make geonode-up`
 2. and can be opened in http://localhost/
 
-~~~~
 ## To create new project 
 This project setup for somalia. You can fork this project and change the configuration for specific country. To do it:
 1. Fork this project
