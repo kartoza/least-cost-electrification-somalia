@@ -1,6 +1,6 @@
 version: '3.4'
 volumes:
-  bep-database:
+  gep-database:
   import_done:
   import_queue:
   cache:
@@ -17,9 +17,11 @@ services:
       # Uncomment to expose the postgis database on the network
       # - ALLOW_IP_RANGE= 0.0.0.0/0
     volumes:
-      - bep-database:/var/lib/postgresql/data/
+      - gep-database:/var/lib/postgresql/data/
     healthcheck:
       test: "exit 0"
+    ports:
+      - "54325:5432"
 
   backend:
     build: ../backend

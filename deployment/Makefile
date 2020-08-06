@@ -68,5 +68,5 @@ rm-volumes:
 	@echo "------------------------------------------------------------------"
 	@echo "Removing all volumes!!!! "
 	@echo "------------------------------------------------------------------"
-	@docker volume rm $(PROJECT_ID)_certificates $(PROJECT_ID)_database $(PROJECT_ID)_geodatadir $(PROJECT_ID)_pgdumps $(PROJECT_ID)_rabbitmq $(PROJECT_ID)_bep-database
+	@docker volume rm $(PROJECT_ID)_certificates $(PROJECT_ID)_database $(PROJECT_ID)_geodatadir $(PROJECT_ID)_pgdumps $(PROJECT_ID)_rabbitmq $(PROJECT_ID)_gep-database
 	@docker volume rm $(PROJECT_ID)_osm-postgis-data $(PROJECT_ID)_import_queue $(PROJECT_ID)_import_done $(PROJECT_ID)_cache
