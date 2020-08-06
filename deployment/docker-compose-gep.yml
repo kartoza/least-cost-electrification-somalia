@@ -49,7 +49,7 @@ services:
     environment:
       # Read the README in docker-osm-pbf
       - CONTINENT=africa
-      - COUNTRY=benin
+      - COUNTRY=somalia
       - BASE_URL=http://download.geofabrik.de
       - MAPPING_URL=''
       - GEOJSON_URL=''
