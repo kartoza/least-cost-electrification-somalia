@@ -15,3 +15,13 @@ To deploy the GEP stuff:
 To deploy geonode:
 1. `make geonode-up`
 2. and can be opened in http://localhost/
+
+
+## To create new project 
+This project setup for benin. You can fork this project and change the configuration for specific country. To do it:
+1. Fork this project
+2. Go to deployment/.env
+3. Change `COMPOSE_PROJECT_NAME=gep-benin` to `COMPOSE_PROJECT_NAME=gep-country name` without space (change space with dash) 
+4. Open `docker-compose.yml`. On line 49-51, change 3 configurations into the country name 
+5. Go to frontend/app/assets/scripts/config/defaults.js, change `COUNTRY` into the country name
+6. On the `docker-osm-setting`, put `clip.geojson` file with geojson on the country.

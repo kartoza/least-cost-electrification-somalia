@@ -45,6 +45,10 @@ x-common-django:
     - SESSION_EXPIRED_CONTROL_ENABLED=False
     - MONITORING_ENABLED=False
     - PYTHONPATH=/home/web/django_project:/spcgeonode
+    # for gep configuration
+    - GEP_TITLE=Benin Electrification Programme
+    - GEP_SHORT_TITLE=BEP
+    - SDI_TITLE=Benin Electrification Platform DI
   volumes:
     - ../django_project:/home/web/django_project
     - ./volumes/static:/home/web/static:rw

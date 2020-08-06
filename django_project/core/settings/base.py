@@ -68,7 +68,7 @@ TEMPLATES = [
                 'geonode.themes.context_processors.custom_theme',
 
                 # custom context processor
-                'custom.context_processors.resource_urls',
+                'custom.context_processors.configs',
 
                 # WAGTAIL
                 'wagtail.contrib.settings.context_processors.settings',
@@ -101,3 +101,7 @@ ROOT_URLCONF = 'core.urls'
 LOCALE_PATHS += (
     os.path.join(PROJECT_ROOT, 'custom', 'locale'),
 )
+
+GEP_TITLE = os.getenv('GEP_TITLE', 'Global Electrification Programme')
+GEP_SHORT_TITLE = os.getenv('GEP_SHORT_TITLE', 'BEP')
+SDI_TITLE = os.getenv('SDI_TITLE', 'Global Electrification Platform SDI')
