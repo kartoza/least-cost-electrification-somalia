@@ -48,7 +48,7 @@ x-common-django:
     # for gep configuration
     - GEP_TITLE=Benin Electrification Programme
     - GEP_SHORT_TITLE=BEP
-    - SDI_TITLE=Benin Electrification Platform DI
+    - SDI_TITLE=Benin Electrification Platform SDI
   volumes:
     - ../django_project:/home/web/django_project
     - ./volumes/static:/home/web/static:rw
