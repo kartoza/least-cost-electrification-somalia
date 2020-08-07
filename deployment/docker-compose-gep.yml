@@ -20,8 +20,6 @@ services:
       - gep-database:/var/lib/postgresql/data/
     healthcheck:
       test: "exit 0"
-    ports:
-      - "54325:5432"
 
   backend:
     build: ../backend
