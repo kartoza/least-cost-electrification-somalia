@@ -80,7 +80,7 @@ TEMPLATES = [
 ]
 
 _DEFAULT_LANGUAGES = (
-    ('id', 'Bahasa Indonesia'),
+    # ('id', 'Bahasa Indonesia'),
     ('en', 'English'),
     ('fr', 'Français'),
 )
