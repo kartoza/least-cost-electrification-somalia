@@ -619,7 +619,7 @@
 
         {# let's we check the language#}
         if ('{{ LANGUAGE_CODE }}' !== getCookie('lang')) {
-            let lang = getCookie('lang') ? getCookie('lang') : 'fr'
+            let lang = getCookie('lang') ? getCookie('lang') : 'en'
             changeLanguage(lang)
         }
     })
