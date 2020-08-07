@@ -128,8 +128,6 @@ services:
     volumes:
       - database:/var/lib/postgresql/data/
     restart: on-failure
-    ports:
-      - "5432:5432"
 
   # Celery worker that executes celery tasks created by Django.
   celery:
