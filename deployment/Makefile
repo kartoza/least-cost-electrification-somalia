@@ -35,6 +35,20 @@ frontend-build:
 	@echo "------------------------------------------------------------------"
 	@docker exec -it $(PROJECT_ID)_frontend_1 yarn build
 
+backend-up:
+	@echo
+	@echo "------------------------------------------------------------------"
+	@echo "up frontend"
+	@echo "------------------------------------------------------------------"
+	@docker-compose $(COMPOSE) -p $(PROJECT_ID) up -d backend
+
+dev-up:
+	@echo
+	@echo "------------------------------------------------------------------"
+	@echo "up frontend"
+	@echo "------------------------------------------------------------------"
+	@docker-compose $(COMPOSE) -p $(PROJECT_ID) up -d dev
+
 geonode-up:
 	@echo
 	@echo "------------------------------------------------------------------"
