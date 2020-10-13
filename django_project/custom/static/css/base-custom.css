@@ -136,58 +136,6 @@ body.custom-home {
     justify-content: space-between;
 }
 
-.btn {
-    font-weight: 300 !important;
-    padding: 10px 20px;
-    color: #005198;
-    border: 1px solid #005198;
-    border-radius: 0;
-    transition: 0.25s;
-}
-
-.btn.btn-orange {
-    color: #fff;
-    border: 1px solid #ff6b0d;
-    background: #ff6b0d;
-}
-
-.btn.btn-orange:hover, .btn.btn-orange:focus {
-    color: #ff6b0d;
-    box-shadow: inset 12em 0 0 0 #fff;
-}
-
-.btn.btn-blue {
-    color: #fff;
-    border: 1px solid #005198;
-    background: #005198;
-}
-
-.btn.btn-blue:hover, .btn.btn-blue:focus {
-    color: #005198;
-    box-shadow: inset 12em 0 0 0 #fff;
-}
-
-.btn.btn-white {
-    color: #fff;
-    border-color: #fff;
-}
-
-.btn.btn-white:hover, .btn.btn-white:focus {
-    color: #005198;
-    box-shadow: inset 12em 0 0 0 #fff;
-}
-
-.btn.btn-grey {
-    color: lightgrey;
-    border: 1px solid lightgrey;
-    background: transparent;
-}
-
-.btn.btn-grey:hover, .btn.btn-grey:focus {
-    color: grey;
-    box-shadow: inset 12em 0 0 0 #fff;
-    text-decoration: none !important;
-}
 
 #content h1 {
     font-size: 30px;
@@ -286,6 +234,11 @@ body.custom-home {
 .navbar-nav > li > .dropdown-menu {
     margin-top: 3px;
 }
+
+.nav > li > a:focus, .dropdown-menu > li > a:focus {
+    background: none;
+}
+
 
 .navbar-nav .dropdown-menu {
     background-color: #383da3;
