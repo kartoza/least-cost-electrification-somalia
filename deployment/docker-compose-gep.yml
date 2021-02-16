@@ -17,7 +17,7 @@ services:
       # Uncomment to expose the postgis database on the network
       # - ALLOW_IP_RANGE= 0.0.0.0/0
     volumes:
-      - gep-database:/var/lib/postgresql/data/
+      - gep-database:/var/lib/postgresql/
     healthcheck:
       test: "exit 0"
 
