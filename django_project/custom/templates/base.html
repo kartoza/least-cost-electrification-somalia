@@ -311,18 +311,20 @@
                         {% if user.is_authenticated %}
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{% trans "Map Viewers" %}<i class="fa fa-angle-down fa-lg"></i></a>
                             <ul class="dropdown-menu">
-                                <li><a href="{% url "maps_browse" %}?limit={{ CLIENT_RESULTS_LIMIT }}{{ DEFAULT_GROUP_FILTER }}">{% trans "Explore Map Viewers" %}</a></li>
+                                <li><a href="{% url "maps_browse" %}?limit={{ CLIENT_RESULTS_LIMIT }}">{% trans "Explore Map Viewers" %}</a></li>
                                 {% if not READ_ONLY_MODE %}
                                     <li><a href="{% url "new_map" %}">{% trans "Create Map Viewer" %}</a></li>
                                 {% endif %}
                             </ul>
                         {% else %}
-                            <a href="{% url "maps_browse" %}?limit={{ CLIENT_RESULTS_LIMIT }}{{ DEFAULT_GROUP_FILTER }}">{% trans "Map Viewers" %}</a>
+                            <a href="{% url "maps_browse" %}?limit={{ CLIENT_RESULTS_LIMIT }}">{% trans "Map Viewers" %}</a>
                         {% endif %}
                     </li>
+                    {% if GEP_MENU_ENABLED %}
                     <li>
                         <a href="/gep" title="{{ GEP_TITLE }}">{{ GEP_SHORT_TITLE }}</a>
                     </li>
+                    {% endif %}
                     {% if user.is_authenticated %}
                         <li>
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{% trans "About" %}<i class="fa fa-angle-down fa-lg"></i></a>
@@ -411,7 +413,7 @@
                         {% if user.is_superuser or user.is_staff %}
                             <li role="separator" class="divider"></li>
                             <li><a href="{% url "admin:index" %}">{% trans "Admin" %}</a></li>
-                            <li><a href="/cms/">{% trans "Wagtail Admin" %}</a></li>
+                            <li><a href="{% url "wagtailadmin_home" %}">{% trans "Wagtail Admin" %}</a></li>
                             {% if 'geonode.geoserver' in INSTALLED_APPS %}
                                 <li><a href="{{ OGC_SERVER.default.WEB_UI_LOCATION }}">GeoServer</a></li>
                             {% endif %}
@@ -619,7 +621,7 @@
 
         {# let's we check the language#}
         if ('{{ LANGUAGE_CODE }}' !== getCookie('lang')) {
-            let lang = getCookie('lang') ? getCookie('lang') : 'en'
+            let lang = getCookie('lang') ? getCookie('lang') : '{{ LANGUAGE_CODE }}'
             changeLanguage(lang)
         }
     })

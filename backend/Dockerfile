@@ -21,3 +21,7 @@ RUN ln -s /usr/local/bin/setup.sh
 
 # setup project
 WORKDIR /home/data-service
+COPY data-service/ /home/data-service/
+RUN setup.sh
+ENTRYPOINT ["setup.sh"]
+CMD ["npm","run","dev"]

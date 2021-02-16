@@ -1,7 +1,7 @@
 #--------- Generic stuff all our Dockerfiles should start with so we get caching ------------
 # Note this base image is based on debian
 
-FROM gep-somalia_django:latest
+FROM gep_django:latest
 MAINTAINER Irwan Fathurrahman<irwan@kartoza.com>
 
 # This section taken on 2 July 2015 from
@@ -19,6 +19,9 @@ RUN sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so
 ENV NOTVISIBLE "in users profile"
 RUN echo "export VISIBLE=now" >> /etc/profile
 
+ADD dev-entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
 # --------------------------------------------------------
 # Open ports as needed
 # --------------------------------------------------------
@@ -28,4 +31,6 @@ EXPOSE 8080
 # Open port 22 as we will be using a remote interpreter from pycharm
 EXPOSE 22
 
-CMD ["/usr/sbin/sshd", "-D"]
+ENTRYPOINT ["/entrypoint.sh"]
+
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8080"]

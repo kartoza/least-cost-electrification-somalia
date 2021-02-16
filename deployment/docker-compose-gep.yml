@@ -24,6 +24,7 @@ services:
   backend:
     build: ../backend
     entrypoint: setup.sh
+    command: npm run dev
     volumes:
       - ../backend/data-service:/home/data-service
     links:
@@ -34,6 +35,7 @@ services:
   frontend:
     build: ../frontend
     entrypoint: setup.sh
+    command: yarn serve
     volumes:
       - ../frontend/explorer:/home/explorer
     ports:

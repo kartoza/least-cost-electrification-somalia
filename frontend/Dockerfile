@@ -22,3 +22,7 @@ RUN npm install -g yarn
 
 COPY setup.sh /usr/local/bin/
 RUN ln -s /usr/local/bin/setup.sh
+COPY explorer/ /home/explorer/
+RUN setup.sh
+ENTRYPOINT ["setup.sh"]
+CMD ["tail","-f","/dev/null"]
