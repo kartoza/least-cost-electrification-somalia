@@ -12,3 +12,6 @@ deployment/media/
 deployment/volumes/
 celery.log
 django_project/celerybeat-schedule
+
+.env
+docker-compose.override.yml

@@ -25,3 +25,19 @@ This project setup for somalia. You can fork this project and change the configu
 5. Open `docker-compose.yml`. On line 49-51, change 3 configurations into the country name 
 6. Go to frontend/app/assets/scripts/config/defaults.js, change `COUNTRY` into the country name
 7. On the `docker-osm-setting`, put `clip.geojson` file with geojson on the country.
+
+## Electrification Modelling
+
+The version of ONSSET used for this project is available here: https://github.com/kartoza/least-cost-electrification-benin-onsset
+
+The input parameters for the clusters and the CSV input file need to be prepared using these tools:
+
+* https://github.com/OnSSET/PopCluster
+* https://github.com/OnSSET/ClusterbasedExtraction
+
+## Global Electrification Platform
+
+The GEP used for this project is checked out as submodules in this repo. The individual repostories are available here:
+
+https://github.com/kartoza/global-electrification-platform-explorer
+https://github.com/kartoza/global-electrification-platform-data-service

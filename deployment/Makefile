@@ -1,16 +1,21 @@
-PROJECT_ID := gep-somalia
-
 SHELL := /bin/bash
-COMPOSE := -f docker-compose-gep.yml -f docker-compose.yml
+
+rebuild:
+	@docker-compose build ${EXTRA_ARGS} django
+	@docker-compose build ${EXTRA_ARGS} dev
+	@docker-compose build ${EXTRA_ARGS}
+
+reload:
+	@docker-compose exec django touch /tmp/django.pid
 
 build-up:
 	@echo
 	@echo "------------------------------------------------------------------"
 	@echo "Building in production mode"
 	@echo "------------------------------------------------------------------"
-	@docker-compose $(COMPOSE) -p $(PROJECT_ID) up -d db
-	@docker-compose $(COMPOSE) -p $(PROJECT_ID) up -d frontend
-	@docker-compose $(COMPOSE) -p $(PROJECT_ID) up -d backend
+	@docker-compose up -d db
+	@docker-compose up -d frontend
+	@docker-compose up -d backend
 	@make prepare-dev-db
 	@make up
 
@@ -19,21 +24,35 @@ up:
 	@echo "------------------------------------------------------------------"
 	@echo "Building in production mode"
 	@echo "------------------------------------------------------------------"
-	@docker-compose $(COMPOSE) -p $(PROJECT_ID) up -d
+	@docker-compose up -d
 
 frontend-up:
 	@echo
 	@echo "------------------------------------------------------------------"
 	@echo "up frontend"
 	@echo "------------------------------------------------------------------"
-	@docker-compose $(COMPOSE) -p $(PROJECT_ID) up -d frontend
+	@docker-compose up -d frontend
 
 frontend-build:
 	@echo
 	@echo "------------------------------------------------------------------"
 	@echo "prepare database"
 	@echo "------------------------------------------------------------------"
-	@docker exec -it $(PROJECT_ID)_frontend_1 yarn build
+	@docker-compose exec frontend yarn build
+
+backend-up:
+	@echo
+	@echo "------------------------------------------------------------------"
+	@echo "up frontend"
+	@echo "------------------------------------------------------------------"
+	@docker-compose up -d backend
+
+dev-up:
+	@echo
+	@echo "------------------------------------------------------------------"
+	@echo "up frontend"
+	@echo "------------------------------------------------------------------"
+	@docker-compose up -d dev
 
 backend-up:
 	@echo
@@ -61,21 +80,24 @@ prepare-dev-db:
 	@echo "------------------------------------------------------------------"
 	@echo "prepare database"
 	@echo "------------------------------------------------------------------"
-	@docker exec -it $(PROJECT_ID)_backend_1 npm run prepare-dev-db
+	@docker-compose exec backend npm run prepare-dev-db
+
+down:
+	@docker-compose down
 
 kill:
 	@echo
 	@echo "------------------------------------------------------------------"
 	@echo "Killing in production mode"
 	@echo "------------------------------------------------------------------"
-	@docker-compose $(COMPOSE) -p $(PROJECT_ID) kill
+	@docker-compose kill
 
 rm: kill
 	@echo
 	@echo "------------------------------------------------------------------"
 	@echo "Removing production instance!!! "
 	@echo "------------------------------------------------------------------"
-	@docker-compose $(COMPOSE) -p $(PROJECT_ID) rm
+	@docker-compose rm
 
 rm-volumes:
 	@echo
