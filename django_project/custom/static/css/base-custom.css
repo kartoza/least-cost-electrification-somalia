@@ -231,6 +231,15 @@ body.custom-home {
     color: white;
 }
 
+#navbar .result-wrapper a {
+    color: black;
+    padding: 10px;
+}
+
+#navbar .result-wrapper a:hover {
+    color: black !important;
+}
+
 .navbar-nav > li > .dropdown-menu {
     margin-top: 3px;
 }
