@@ -1,4 +1,4 @@
-psycopg2-binary
+psycopg2-binary==2.8.5
 django-braces==1.9.0
 django-model-utils==1.4.0
 django-pipeline==1.6.14
@@ -7,23 +7,18 @@ markdown==2.6.11
 
 raven==6.10.0
 django-sentry==1.13.5
-pytz
-# support special characters
+pytz==2020.1
 
-# Django Easy Audit
-# https://github.com/soynatan/django-easy-audit
-# git+https://github.com/soynatan/django-easy-audit.git
 django-grappelli==2.14.2
-
 djangorestframework==3.9.1
 djangorestframework-gis==0.13
 service_identity
 
-# igrac
-wagtail>=2.9.3
-wagtailmenus
-pyexcel-xls
-pyexcel-xlsx
+# wagtail
+wagtail==2.9.3
+wagtailmenus==3.0.2
+pyexcel-xls==0.5.8
+pyexcel-xlsx==0.5.8
 
 git+https://github.com/kartoza/django-mapstore-adapter
 git+https://github.com/kartoza/geonode-mapstore-client.git@develop
