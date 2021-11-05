@@ -49,6 +49,7 @@ x-common-django:
     - GEP_TITLE=Somalia Electrification Programme
     - GEP_SHORT_TITLE=SEP
     - SDI_TITLE=Somalia Electrification Platform SDI
+  entrypoint: ["/entrypoint.sh"]
   volumes:
     - ../django_project:/home/web/django_project
     - ./volumes/static:/home/web/static:rw
@@ -74,7 +75,6 @@ services:
   # Our custom django application. It includes Geonode.
   django:
     <<: *default-common-django
-    entrypoint: ["/entrypoint.sh"]
     command: 'uwsgi --ini /uwsgi.conf'
 
   nginx:
