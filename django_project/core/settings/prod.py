@@ -2,12 +2,14 @@
 
 """Project level settings."""
 from .base import *  # noqa
+import ast
+import os
 
 # Comment if you are not running behind proxy
 USE_X_FORWARDED_HOST = True
 
 # Set debug to false for production
-DEBUG = TEMPLATE_DEBUG = True
+DEBUG = TEMPLATE_DEBUG = ast.literal_eval(os.environ.get('DEBUG', 'False'))
 
 # See fig.yml file for postfix container definition#
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
