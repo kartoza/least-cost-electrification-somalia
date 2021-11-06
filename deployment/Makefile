@@ -1,4 +1,4 @@
-PROJECT_ID := gep-somalia
+PROJECT_ID := gepsomalia
 
 SHELL := /bin/bash
 COMPOSE := -f docker-compose-gep.yml -f docker-compose.yml

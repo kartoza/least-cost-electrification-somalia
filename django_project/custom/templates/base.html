@@ -279,7 +279,7 @@
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav toolbar">
                 <li id="home-navbar">
-                    <a class="logo" href="/"><i class="fa fa-home" aria-hidden="true"></i></a>
+                    <a class="logo" href="/sdi"><i class="fa fa-home" aria-hidden="true"></i></a>
                 </li>
                 {% block tabs %}
 
@@ -320,9 +320,6 @@
                             <a href="{% url "maps_browse" %}?limit={{ CLIENT_RESULTS_LIMIT }}{{ DEFAULT_GROUP_FILTER }}">{% trans "Map Viewers" %}</a>
                         {% endif %}
                     </li>
-                    <li>
-                        <a href="/gep" title="{{ GEP_TITLE }}">{{ GEP_SHORT_TITLE }}</a>
-                    </li>
                     {% if user.is_authenticated %}
                         <li>
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{% trans "About" %}<i class="fa fa-angle-down fa-lg"></i></a>
@@ -344,6 +341,9 @@
                             </ul>
                         </li>
                     {% endif %}
+                    <li>
+                        <a href="/gep" title="{{ GEP_TITLE }}">{{ GEP_SHORT_TITLE }}</a>
+                    </li>
                     {% main_menu %}
                     {% block extra_tab %}
 

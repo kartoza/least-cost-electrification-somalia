@@ -25,3 +25,14 @@ This project setup for somalia. You can fork this project and change the configu
 5. Open `docker-compose.yml`. On line 49-51, change 3 configurations into the country name 
 6. Go to frontend/app/assets/scripts/config/defaults.js, change `COUNTRY` into the country name
 7. On the `docker-osm-setting`, put `clip.geojson` file with geojson on the country.
+
+
+## To config GEP Frontend
+This project setup for somalia. You can fork this project and change the configuration for specific country. To do it:
+1. If the gep suburl is not '/gep', change here : https://github.com/kartoza/global-electrification-platform-explorer/blob/3c2c70ebe5cb27d1a77c5d4a7afc2e0d4464339b/app/assets/scripts/config/production.js#L7
+2. Change url for sdi home in : https://github.com/kartoza/global-electrification-platform-explorer/blob/3c2c70ebe5cb27d1a77c5d4a7afc2e0d4464339b/app/assets/scripts/config/production.js#L8
+3. To change the cluster layer
+Change the source layer in https://github.com/kartoza/global-electrification-platform-explorer/blob/3c2c70ebe5cb27d1a77c5d4a7afc2e0d4464339b/app/assets/scripts/config/defaults.js#L17
+and change layer url in https://github.com/kartoza/global-electrification-platform-explorer/blob/3c2c70ebe5cb27d1a77c5d4a7afc2e0d4464339b/app/assets/scripts/config/defaults.js#L18
+4. To change external layers for overlay, change here
+https://github.com/kartoza/global-electrification-platform-explorer/blob/3c2c70ebe5cb27d1a77c5d4a7afc2e0d4464339b/app/assets/scripts/config/externalLayers.json
